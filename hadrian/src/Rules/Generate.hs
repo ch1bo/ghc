@@ -297,8 +297,9 @@ generateConfigHs = do
     intLib              <- getIntegerPackage
     debugged            <- ghcDebugged    <$> expr flavour
     let cIntegerLibraryType
-            | intLib == integerGmp    = "IntegerGMP"
-            | intLib == integerSimple = "IntegerSimple"
+            | intLib == integerGmp     = "IntegerGMP"
+            | intLib == integerOpenSSL = "IntegerOpenSSL"
+            | intLib == integerSimple  = "IntegerSimple"
             | otherwise = error $ "Unknown integer library: " ++ pkgName intLib
     cSupportsSplitObjs         <- expr $ yesNo <$> supportsSplitObjects
     cGhcWithInterpreter        <- expr $ yesNo <$> ghcWithInterpreter
@@ -320,6 +321,7 @@ generateConfigHs = do
         , "#include \"ghc_boot_platform.h\""
         , ""
         , "data IntegerLibrary = IntegerGMP"
+        , "                    | IntegerOpenSSL"
         , "                    | IntegerSimple"
         , "                    deriving Eq"
         , ""

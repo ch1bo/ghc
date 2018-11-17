@@ -5,10 +5,10 @@ module Packages (
     compareSizes, compiler, containers, deepseq, deriveConstants, directory,
     filepath, genapply, genprimopcode, ghc, ghcBoot, ghcBootTh, ghcCompact,
     ghcHeap, ghci, ghcPkg, ghcPrim, ghcTags, ghcSplit, haddock, haskeline,
-    hsc2hs, hp2ps, hpc, hpcBin, integerGmp, integerSimple, iserv, libffi,
-    libiserv, mtl, parsec, parallel, pretty, primitive, process, rts, runGhc,
-    stm, templateHaskell, terminfo, text, time, timeout, touchy, transformers,
-    unlit, unix, win32, xhtml, ghcPackages, isGhcPackage,
+    hsc2hs, hp2ps, hpc, hpcBin, integerGmp, integerOpenSSL, integerSimple,
+    iserv, libffi, libiserv, mtl, parsec, parallel, pretty, primitive, process,
+    rts, runGhc, stm, templateHaskell, terminfo, text, time, timeout, touchy,
+    transformers, unlit, unix, win32, xhtml, ghcPackages, isGhcPackage,
 
     -- * Package information
     programName, nonHsMainPackage, autogenPath, programPath, timeoutPath,
@@ -34,10 +34,11 @@ ghcPackages =
     , compareSizes, compiler, containers, deepseq, deriveConstants, directory
     , filepath, genapply, genprimopcode, ghc, ghcBoot, ghcBootTh, ghcCompact
     , ghcHeap, ghci, ghcPkg, ghcPrim, ghcTags, haddock, haskeline, hsc2hs, hp2ps
-    , hpc, hpcBin, integerGmp, integerSimple, iserv, libffi, libiserv, mtl
-    , parsec, parallel, pretty, process, rts, runGhc, stm, templateHaskell
-    , terminfo, text, time, touchy, transformers, unlit, unix, win32, xhtml
-    , timeout ]
+    , hpc, hpcBin, integerGmp, integerOpenSSL, integerSimple, iserv, libffi
+    , libiserv, mtl, parsec, parallel, pretty, process, rts, runGhc, stm
+    , templateHaskell, terminfo, text, time, touchy, transformers, unlit, unix
+    , win32, xhtml, timeout
+    ]
 
 -- TODO: Optimise by switching to sets of packages.
 isGhcPackage :: Package -> Bool
@@ -77,6 +78,7 @@ hp2ps               = util "hp2ps"
 hpc                 = lib  "hpc"
 hpcBin              = util "hpc-bin"         `setPath` "utils/hpc"
 integerGmp          = lib  "integer-gmp"
+integerOpenSSL      = lib  "integer-openssl"
 integerSimple       = lib  "integer-simple"
 iserv               = util "iserv"
 libffi              = top  "libffi"
